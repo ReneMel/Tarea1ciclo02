@@ -1,5 +1,16 @@
+
+/*
+	Diego René Melendez Alvarado 				00174118
+	Christian Alexander Contreras Bolaños		00149618
+	Pedro Enrique Menjivar Hernández  			00056118
+
+
+*/
+
+
 #include <iostream>
 using namespace std;
+
 
 
 void Menu();
@@ -35,6 +46,7 @@ void Lista::mostrar_lista(void){
 	s=lsinicio;
 
 	while(s!=NULL){
+		
 		cout<<s->dato<<endl;
 		s=s->sig;
 	}
@@ -56,7 +68,8 @@ void Lista::Sumaelementos(){
 		//cout<<s<<endl;
 		s=s->sig; 
 	}
-	cout<<endl<<"Actualmente en la lista hay "<<Numero<<" elementos."<<endl;
+	cout<<endl<<endl<<"Actualmente en la lista hay "<<Numero<<" elementos contados de manera iterativa."<<endl;
+	cout<<endl;
 }
 
 int Lista::SumaelementosRec(Nodo*list/*,int number*/){
@@ -77,19 +90,24 @@ int Lista::SumaelementosRec(Nodo*list/*,int number*/){
 void Lista::ingresodatos(){
 
 	int dato;
-	
+	string x;
+
 		//cout<<"Ingrese datos númericos a la lista: ";
-	while (cin>>dato){
+	while (x!="s"){
+		cout<<"Digite el dato (uno por uno):"<<endl;
+		cin >>dato;
+		cout<<"Para parar presione s, para continuar presione c; "<<endl;
+		cin >>x;
 		Insertarls(dato);
 		//mostrar_lista();
 		cout<<endl;
 	}
 
-	//objLista.Sumaelementos();
-	//cout<< "ESTA PUTA CANTIDAD DE ELEMENTOS: "<<SumaelementosRec(lsinicio/*,0*/)<<" "<<endl;
 }
 void Lista::inicSumaRec(){
-	cout<<SumaelementosRec(lsinicio/*,0*/)<<" "<<endl;
+	cout<<endl;
+	cout<<endl<<endl<<"Actualmente en la lista hay "<<SumaelementosRec(lsinicio/*,0*/)<<" elementos contados de manera recursiva."<<endl;
+	cout<<endl;
 }
 
 
@@ -106,8 +124,8 @@ void Menu(){
 	int opcion=0;
 	Lista objLista;
 
-do{
-	//	cout<<opcion<<endl;
+for (int i=0; i<100;i++){
+		//cout<<opcion<<endl;
 		opcion=0;
 		cout <<"<:MENU:>"<<endl;
 		cout <<"1. Insertar valores. "<<endl;
@@ -117,20 +135,29 @@ do{
 		cout <<"5. Salir."<<endl;
 		cin >>opcion;
 
-		switch (opcion) {
-			case 1: cout<<"Digite los elementos"<<endl;
-							objLista.ingresodatos();
-							break;
-			case 2: cout<<"Los elementos de la lista son: "<<endl;
-			 				objLista.mostrar_lista();
-							break;
-			case 3: cout<<"El resultado de forma iterativa es: ";
-			        		objLista.Sumaelementos();
-							break;
-			case 4: cout<<"El resultado de forma recursiva es: ";
-			  				objLista.inicSumaRec();
-							break;
-			default: cout<<"Opcion no valida"<<endl; break;
+		if(opcion==5){
+			break;
 		}
-	}while(opcion!=5);
+			//cin >>opcion;
+			switch (opcion) {
+				case 1: cout<<"Digite los elementos"<<endl;
+								objLista.ingresodatos();
+								//opcion=0;
+								break;
+				case 2: cout<<"Los elementos de la lista son: "<<endl;
+			 					objLista.mostrar_lista();
+			 					//opcion=0;
+								break;
+				case 3: cout<<"El resultado de forma iterativa es: ";
+			    	    		objLista.Sumaelementos();
+			    	    		//opcion=0;
+								break;
+				case 4: cout<<"El resultado de forma recursiva es: ";
+			  					objLista.inicSumaRec();
+			  					//opcion=0;
+								break;
+				default: cout<<"Opcion no valida"<<endl; 
+
+		}
+	}
 }
